@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DealNest - Settings</title>
+  <style>
+    body { font: 14px/1.5 system-ui, sans-serif; max-width: 640px; margin: 32px auto; padding: 0 16px; color: #1c1e21; }
+    @media (prefers-color-scheme: dark) { body { background: #18191a; color: #e4e6eb; } input, textarea { background: #242526; color: #e4e6eb; border-color: #3a3b3c; } }
+    h1 { font-size: 20px; } label { display: block; margin-top: 14px; font-weight: 600; }
+    input, textarea { width: 100%; padding: 7px 9px; border: 1px solid #ccd0d5; border-radius: 6px; font: inherit; }
+    textarea { height: 70px; } small { color: #65676b; display: block; font-weight: 400; }
+    button { margin-top: 18px; padding: 8px 18px; border: 0; border-radius: 6px; background: #0b7a4b; color: #fff; font-weight: 600; cursor: pointer; }
+    #msg { display: block; margin-top: 12px; white-space: pre-line; }
+  </style>
+</head>
+<body>
+  <h1>DealNest: Meta API settings</h1>
+  <p>Optional. Only needed for the "Meta API" source. Stored locally in this browser and sent only to graph.facebook.com.</p>
+
+  <label>Access token
+    <small>A token for your Meta app. For Pages you manage, use a token with the required Page permissions. Reading other Pages requires Page Public Content Access approval. See <a href="https://developers.facebook.com/docs/graph-api/reference/page/feed/" target="_blank" rel="noopener noreferrer">Meta Page Feed requirements</a>.</small>
+    <input id="token" type="password" autocomplete="off">
+  </label>
+  <label>Your Instagram Business account ID
+    <small>Use the ID of an Instagram Professional account connected to a Facebook Page. The token needs instagram_basic, instagram_manage_insights, and pages_read_engagement for Business Discovery. See <a href="https://developers.facebook.com/documentation/instagram-platform/instagram-api-with-facebook-login/business-discovery" target="_blank" rel="noopener noreferrer">Meta Business Discovery requirements</a>.</small>
+    <input id="igUserId" type="text">
+  </label>
+  <label>Instagram usernames to check
+    <small>One per line or comma-separated, without @.</small>
+    <textarea id="igUsers"></textarea>
+  </label>
+  <label>Facebook Page IDs or usernames to check
+    <small>One per line or comma-separated.</small>
+    <textarea id="fbPages"></textarea>
+  </label>
+  <label>Posts per account/source
+    <input id="limit" type="number" min="1" max="100" value="50">
+  </label>
+  <label>Graph API version
+    <input id="graphVersion" type="text" value="v26.0">
+  </label>
+
+  <button id="save">Save</button>
+  <button id="test" type="button">Save &amp; test Meta connection</button>
+  <span id="msg" role="status" aria-live="polite"></span>
+  <script src="options.js"></script>
+</body>
+</html>

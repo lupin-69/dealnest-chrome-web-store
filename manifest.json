@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "DealNest - Price Compare",
+  "short_name": "DealNest",
+  "version": "1.0.0",
+  "description": "Compare prices from captured Facebook, Instagram, Daraz and Bikroy listings. Captured data stays in your browser.",
+  "permissions": ["storage", "unlimitedStorage", "activeTab", "scripting"],
+  "host_permissions": ["https://graph.facebook.com/*", "https://www.daraz.com.bd/*", "https://*.facebook.com/*", "https://*.instagram.com/*", "https://bikroy.com/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "action": {
+    "default_title": "DealNest",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/dealnest16.png", "32": "icons/dealnest32.png", "48": "icons/dealnest48.png" }
+  },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "content_scripts": [
+    {
+      "matches": ["https://*.facebook.com/*", "https://*.instagram.com/*", "https://www.daraz.com.bd/catalog/*", "https://bikroy.com/mobile-phones-tablets*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": { "16": "icons/dealnest16.png", "32": "icons/dealnest32.png", "48": "icons/dealnest48.png", "128": "icons/dealnest128.png" }
+}

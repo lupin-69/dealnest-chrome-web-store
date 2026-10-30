@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10251e">
+  <meta name="description" content="Download DealNest, the price comparison Chrome extension.">
+  <title>Download DealNest</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #17241e;
+      background: #f3f7f3;
+    }
+    * { box-sizing: border-box; }
+    body { min-height: 100vh; margin: 0; display: grid; place-items: center; padding: 24px; }
+    main {
+      width: min(100%, 520px);
+      padding: clamp(28px, 7vw, 56px);
+      border: 1px solid #dce8df;
+      border-radius: 24px;
+      background: #fff;
+      box-shadow: 0 24px 70px #173a2814;
+      text-align: center;
+    }
+    .mark {
+      display: grid;
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 22px;
+      place-items: center;
+      border-radius: 20px;
+      background: #e7f5eb;
+      color: #167447;
+      font-size: 32px;
+      font-weight: 750;
+    }
+    .eyebrow { margin: 0 0 8px; color: #167447; font-size: 12px; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(32px, 7vw, 44px); letter-spacing: -.04em; line-height: 1.1; }
+    .intro { margin: 16px 0 28px; color: #53645a; }
+    .download {
+      display: inline-flex;
+      min-height: 52px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 24px;
+      border-radius: 12px;
+      background: #167447;
+      color: #fff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .15s ease, transform .15s ease;
+    }
+    .download:hover { transform: translateY(-1px); background: #105d38; }
+    .download:focus-visible { outline: 3px solid #83c89d; outline-offset: 3px; }
+    .note { margin: 18px 0 0; color: #718078; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mark" aria-hidden="true">D</div>
+    <p class="eyebrow">DealNest · Chrome extension</p>
+    <h1>Find a better buy.</h1>
+    <p class="intro">Compare prices across your favorite marketplaces with DealNest.</p>
+    <a class="download"
+       href="https://drive.google.com/uc?export=download&amp;id=1nG5YQf3mGZPukqA7tpw7h_9ZIQu3UoIH"
+       download="DealNest-chrome-web-store.zip">
+      Download DealNest <span aria-hidden="true">↓</span>
+    </a>
+    <p class="note">The ZIP download is hosted on Google Drive.</p>
+  </main>
+</body>
+</html>

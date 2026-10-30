@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DealNest · Price Compare</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="topbar">
+    <img class="brand-mark" src="icons/dealnest.svg" alt="">
+    <div class="brand-copy"><h1>DealNest</h1><span>Find a better buy, with less scrolling.</span></div>
+    <a id="settings" href="#">Settings</a>
+  </header>
+
+  <main>
+    <section class="panel search-panel">
+      <div class="section-heading"><span class="step">01</span><div><h2>What are you looking for?</h2><p>Start with the exact product name or model.</p></div></div>
+      <section class="row product-row">
+        <input id="q" type="text" placeholder="e.g. iPhone 15 128GB" title="Enter a product name or model only. Prices are extracted from matching posts." autofocus>
+        <button id="go">Compare prices <span aria-hidden="true">→</span></button>
+      </section>
+      <div class="muted query-note">Keep prices out of this box; prices are read from listings.</div>
+      <div class="detail-grid">
+        <label class="field-label" for="description">Description or condition <span>Optional</span></label>
+        <input id="description" type="text" aria-label="Description or condition" placeholder="e.g. used, good condition, black" title="All words entered here must appear in the listing.">
+        <div class="muted query-note">Every word is required for a result to match.</div>
+      </div>
+      <div class="price-range" aria-label="Preferred price range">
+        <div class="field-label">Your budget <span>Optional · ৳</span></div>
+        <div class="budget-fields">
+          <label class="sr-only" for="minPrice">Minimum preferred price in taka</label>
+          <input id="minPrice" type="number" min="0" step="1" placeholder="Minimum">
+          <span class="range-separator">to</span>
+          <label class="sr-only" for="maxPrice">Maximum preferred price in taka</label>
+          <input id="maxPrice" type="number" min="0" step="1" placeholder="Maximum">
+          <span class="currency-badge">৳ BDT</span>
+        </div>
+        <div class="muted query-note">Inclusive range. Leave a side blank for no limit.</div>
+      </div>
+      <div class="rank-note"><span aria-hidden="true">✦</span> Results rank by product match first, then lower price.</div>
+    </section>
+
+    <section class="panel sources-panel">
+      <div class="section-heading"><span class="step">02</span><div><h2>Choose where to search</h2><p>Drag sources into your search, or tap one to move it.</p></div></div>
+      <div class="source-zones">
+        <div class="source-zone">
+          <div class="zone-heading"><span>Available sources</span><span class="zone-hint">Drag to select</span></div>
+          <div id="availableSites" class="site-tray available-tray" role="group" aria-label="Available search sources"></div>
+        </div>
+        <div class="drop-arrow" aria-hidden="true">↓</div>
+        <div class="source-zone selected-zone">
+          <div class="zone-heading"><span>Search these</span><span id="selectedCount" class="zone-count"></span></div>
+          <div id="selectedSites" class="site-tray selected-tray" role="group" aria-label="Selected search sources" aria-describedby="siteHelp"></div>
+        </div>
+      </div>
+      <p id="siteHelp" class="muted query-note">Tap or press Enter on a source to move it. You can also drag sources between boxes.</p>
+      <button id="searchMarketplaces" class="search-button">Search selected sources <span aria-hidden="true">→</span></button>
+      <p class="muted source-disclaimer">Only posts and listings visible to your account can be captured. Bikroy search uses its Phones &amp; Tablets category.</p>
+    </section>
+
+    <details class="panel options-panel">
+      <summary><span><strong>More options</strong><small>Sources, matching and capture settings</small></span><span class="disclosure-mark" aria-hidden="true">⌄</span></summary>
+      <section class="opts">
+        <label><input type="checkbox" id="useCap" checked> Captured posts (<span id="capCount">0</span>)</label>
+        <label><input type="checkbox" id="useApi"> Meta API (Facebook/Instagram)</label>
+        <label><input type="checkbox" id="useFbMarketplace" checked> Facebook Marketplace results</label>
+        <label><input type="checkbox" id="useDarazMarketplace" checked> Daraz Marketplace results</label>
+        <label><input type="checkbox" id="useBikroy" checked> Bikroy results</label>
+        <label><input type="checkbox" id="demo"> Demo data (sample only)</label>
+        <label><input type="checkbox" id="exact" checked> Exact product terms only</label>
+        <label><input type="checkbox" id="strict" checked> Strict model match</label>
+        <label>Minimum match <input type="number" id="thr" value="80" min="40" max="100"></label>
+      </section>
+      <section class="cap">
+        <div class="section-heading"><span class="step">↻</span><div><h2>Automatic capture</h2><p>Collect visible results as search pages load.</p></div></div>
+        <div id="capMsg" class="muted capture-status"></div>
+        <div class="row capture-controls">
+          <button id="capture" class="sec">Capture this page</button>
+          <label><input type="checkbox" id="auto" checked> Auto-scroll &amp; capture</label>
+          <label>Page limit <input type="number" id="maxPosts" value="200" min="10" max="1000"></label>
+          <button id="clear" class="link">Clear captured</button>
+        </div>
+        <p class="capture-note">Stops at the page limit or when no more results load. Private and unavailable posts cannot be captured.</p>
+      </section>
+    </details>
+  </main>
+
+  <div id="status" class="muted"></div>
+  <div id="warnings"></div>
+  <div id="summary"></div>
+
+  <div class="tablewrap">
+    <table id="tbl" hidden>
+      <thead><tr><th>Price (৳)</th><th>Previous / Δ</th><th>Seller</th><th>Source</th><th>Match</th><th>Post details</th><th>Date</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <footer><button id="export" class="sec" hidden>Export comparison as CSV</button></footer>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
